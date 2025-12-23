@@ -1,7 +1,6 @@
-# SFSymbols
-
 <div align="center">
   <img src="recording.gif" width="300" />
+  <h1>SFSymbols</h1>
   <h3>SFSymbols gives you a ready-to-use symbol picker for SwiftUI and an API for reading the SF Symbols catalog.</h3>
   <h4>Use it to let users pick symbols in-app, or to build your own symbol browsing UI.</h4>
 
