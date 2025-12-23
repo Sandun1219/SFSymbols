@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
-    name: Build and Test (Xcode ${{ matrix.xcode }})
+    name: Build (Xcode ${{ matrix.xcode }})
     runs-on: macos-26
     continue-on-error: false
     strategy:
