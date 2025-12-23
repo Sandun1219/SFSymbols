@@ -11,7 +11,7 @@ jobs:
   build:
     name: Build and Test (Xcode ${{ matrix.xcode }})
     runs-on: macos-26
-    continue-on-error: true
+    continue-on-error: false
     strategy:
       matrix:
         include:
