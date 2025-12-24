@@ -50,6 +50,9 @@ struct SymbolPicker: View {
         .onAppear {
             updateCurrentResults()
         }
+        .onDisappear {
+            searchTask?.cancel()
+        }
         .onChange(of: searchText) { oldValue, _ in
             updateCurrentResults(oldSearchText: oldValue)
         }
