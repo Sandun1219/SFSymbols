@@ -72,7 +72,10 @@ private extension SymbolPicker {
         } else {
             symbols.symbols
         }
-        searchTask = Task.detached(priority: .userInitiated) { [normalizedSearchText, categoryFilter, symbols] in
+        searchTask = Task.detached(
+            name: "SFSymbolPicker Filter",
+            priority: .userInitiated
+        ) { [normalizedSearchText, categoryFilter, symbols] in
             guard !Task.isCancelled else {
                 return
             }
