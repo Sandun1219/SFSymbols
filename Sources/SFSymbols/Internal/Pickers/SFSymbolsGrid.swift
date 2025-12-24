@@ -82,17 +82,13 @@ private extension SFSymbolsGrid {
             round(12 * scale)
         }
         private var backgroundStyle: some ShapeStyle {
-            if #available(macOS 26, *) {
-                AnyShapeStyle(.ultraThickMaterial)
-            } else {
-                switch colorScheme {
-                case .light:
-                    AnyShapeStyle(.background)
-                case .dark:
-                    AnyShapeStyle(.background.secondary)
-                @unknown default:
-                    AnyShapeStyle(.background.secondary)
-                }
+            switch colorScheme {
+            case .light:
+                AnyShapeStyle(.background)
+            case .dark:
+                AnyShapeStyle(.background.secondary)
+            @unknown default:
+                AnyShapeStyle(.background.secondary)
             }
         }
         private var strokeStyle: some ShapeStyle {
@@ -103,18 +99,27 @@ private extension SFSymbolsGrid {
         }
 
         var body: some View {
-            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                .fill(backgroundStyle)
-                .overlay {
-                    Image(systemName: systemName)
-                        .font(.system(size: 18 * scale, weight: .regular))
-                        .symbolRenderingMode(.monochrome)
-                        .foregroundStyle(.primary)
-                }
-                .overlay {
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .stroke(strokeStyle, lineWidth: strokeWidth)
-                }
+            ZStack {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(backgroundStyle)
+                    #if os(macOS)
+                    .opacity(0.3)
+                    #endif
+                #if os(macOS)
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(.regularMaterial)
+                #endif
+            }
+            .overlay {
+                Image(systemName: systemName)
+                    .font(.system(size: 18 * scale, weight: .regular))
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundStyle(.primary)
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(strokeStyle, lineWidth: strokeWidth)
+            }
         }
     }
 }
