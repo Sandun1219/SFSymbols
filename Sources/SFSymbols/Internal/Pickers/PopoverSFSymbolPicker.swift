@@ -13,8 +13,12 @@ struct PopoverSFSymbolPicker: View {
                 searchText: searchText
             )
             .modifier(SearchSafeAreaBarViewModifier {
+                HStack(spacing: 4) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.placeholder)
                 TextField("Search", text: $searchText, prompt: Text("Search"))
                     .textFieldStyle(.plain)
+                }
                     .padding(.horizontal, 7)
                     .padding(.vertical, 5)
                     .background(Capsule().fill(.ultraThinMaterial.opacity(0.85)))
