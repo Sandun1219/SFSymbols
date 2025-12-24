@@ -1,4 +1,4 @@
-public struct SFSymbol: Identifiable, Hashable {
+public struct SFSymbol: Identifiable, Hashable, Sendable {
     public let id: String
     public let name: String
     public let searchTerms: [String]

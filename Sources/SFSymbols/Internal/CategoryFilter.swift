@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum CategoryFilter: Identifiable, Hashable {
+enum CategoryFilter: Identifiable, Hashable, Sendable {
     case noFilter
     case filter(SFSymbolCategory)
 
