@@ -10,9 +10,10 @@ public struct SFSymbols {
     public init() async throws {
         do {
             let bundle = try await CoreGlyphsBundleLoader.load()
-            let categoriesPlist = try CategoriesPlist.load(from: bundle)
-            let symbolOrderPlist = try SymbolOrderPlist.load(from: bundle)
-            let (symbols, symbolNameMap) = try Self.symbols(in: bundle, categoriesPlist: categoriesPlist)
+            async let _categoriesPlist = try CategoriesPlist.load(from: bundle)
+            async let _symbolOrderPlist = try SymbolOrderPlist.load(from: bundle)
+            let (categoriesPlist, symbolOrderPlist) = try await (_categoriesPlist, _symbolOrderPlist)
+            let (symbols, symbolNameMap) = try await Self.symbols(in: bundle, categoriesPlist: categoriesPlist)
             let sortedSymbols = Self.sortSymbols(symbols, accordingTo: symbolOrderPlist.names)
             self.symbols = sortedSymbols
             self.categories = try Self.categories(
@@ -31,10 +32,15 @@ private extension SFSymbols {
     private static func symbols(
         in bundle: Bundle,
         categoriesPlist: CategoriesPlist
-    ) throws -> ([SFSymbol], [String: SFSymbol]) {
-        let nameAvailabilityPlist = try NameAvailabilityPlist.load(from: bundle)
-        let symbolSearchPlist = try SymbolSearchPlist.load(from: bundle)
-        let symbolCategoriesPlist = try SymbolCategoriesPlist.load(from: bundle)
+    ) async throws -> ([SFSymbol], [String: SFSymbol]) {
+        async let _nameAvailabilityPlist = try NameAvailabilityPlist.load(from: bundle)
+        async let _symbolSearchPlist = try SymbolSearchPlist.load(from: bundle)
+        async let _symbolCategoriesPlist = try SymbolCategoriesPlist.load(from: bundle)
+        let (nameAvailabilityPlist, symbolSearchPlist, symbolCategoriesPlist) = try await (
+            _nameAvailabilityPlist,
+            _symbolSearchPlist,
+            _symbolCategoriesPlist
+        )
         var symbols: [SFSymbol] = []
         symbols.reserveCapacity(nameAvailabilityPlist.availableSymbols.count)
         var symbolNameMap: [String: SFSymbol] = [:]
