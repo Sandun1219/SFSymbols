@@ -82,13 +82,17 @@ private extension SFSymbolsGrid {
             round(12 * scale)
         }
         private var backgroundStyle: some ShapeStyle {
-            switch colorScheme {
-            case .light:
-                AnyShapeStyle(.background)
-            case .dark:
-                AnyShapeStyle(.background.secondary)
-            @unknown default:
-                AnyShapeStyle(.background.secondary)
+            if #available(macOS 26, *) {
+                AnyShapeStyle(.ultraThickMaterial)
+            } else {
+                switch colorScheme {
+                case .light:
+                    AnyShapeStyle(.background)
+                case .dark:
+                    AnyShapeStyle(.background.secondary)
+                @unknown default:
+                    AnyShapeStyle(.background.secondary)
+                }
             }
         }
         private var strokeStyle: some ShapeStyle {
