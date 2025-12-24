@@ -2,11 +2,6 @@ import Foundation
 import OSLog
 
 public struct SFSymbols {
-    private struct IntermediateSymbols {
-        let allSymbols: [SFSymbol]
-        let symbolNameMap: [String: SFSymbol]
-    }
-
     public let symbols: [SFSymbol]
     public let categories: [SFSymbolCategory]
 
