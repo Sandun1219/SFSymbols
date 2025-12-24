@@ -64,7 +64,6 @@ struct CategoryFilterPicker: View {
                     .shadow(color: .black.opacity(0.1), radius: 4)
             }
         }
-        .padding(.horizontal, 27)
     }
 }
 

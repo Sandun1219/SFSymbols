@@ -7,10 +7,27 @@ struct SymbolGrid: View {
     @State private var columns: [GridItem] = []
     @State private var tileHeight: CGFloat = 45
     @State private var symbolTileScale: CGFloat = 1
-
-    private let edgePadding: CGFloat = 27
-    private let preferredTileSize = CGSize(width: 57, height: 45)
-    private let spacing: CGFloat = 14
+    private var edgePadding: CGFloat {
+        #if os(iOS)
+        27
+        #else
+        14
+        #endif
+    }
+    private var preferredTileSize: CGSize {
+        #if os(iOS)
+        CGSize(width: 57, height: 45)
+        #else
+        CGSize(width: 51, height: 41)
+        #endif
+    }
+    private var spacing: CGFloat {
+        #if os(iOS)
+        14
+        #else
+        10
+        #endif
+    }
 
     var body: some View {
         LazyVGrid(columns: columns, spacing: spacing) {

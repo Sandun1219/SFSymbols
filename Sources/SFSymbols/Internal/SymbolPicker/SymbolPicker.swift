@@ -29,6 +29,9 @@ struct SymbolPicker: View {
                             .id("top")
                         SymbolGrid(symbols: currentSymbols, selection: $selection)
                     }
+                    #if os(macOS)
+                    .contentMargins(.top, 8, for: .scrollContent)
+                    #endif
                     .onChange(of: currentSymbols) { _, _ in
                         proxy.scrollTo("top", anchor: .top)
                     }
@@ -39,9 +42,12 @@ struct SymbolPicker: View {
             if !isSearchBarFocused && !showSearchResults {
                 CategoryFilterPicker(categories: symbols.displayableCategories, selection: $categoryFilter)
                     .transition(.opacity.animation(.linear(duration: 0.1)))
-                #if os(macOS)
+                #if os(iOS)
+                    .padding(.horizontal, 27)
+                #elseif os(macOS)
+                    .padding(.horizontal, 14)
                     .padding(.bottom)
-                    .frame(maxWidth: 500)
+                    .shadow(color: .black.opacity(0.1), radius: 6, y: 2)
                 #endif
             }
         }

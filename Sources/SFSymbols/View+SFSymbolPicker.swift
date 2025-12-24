@@ -19,8 +19,14 @@ private struct SFSymbolPickerViewModifier: ViewModifier {
     @Binding var selection: String?
 
     func body(content: Content) -> some View {
-        content.sheet(isPresented: $isPresented) {
-            ModalSFSymbolPicker(selection: $selection)
+        #if os(macOS)
+        content.popover(isPresented: $isPresented, arrowEdge: .top) {
+            PopoverSymbolPicker(selection: $selection)
         }
+        #else
+        content.sheet(isPresented: $isPresented) {
+            SheetSFSymbolPicker(selection: $selection)
+        }
+        #endif
     }
 }
