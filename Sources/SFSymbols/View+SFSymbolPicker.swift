@@ -19,7 +19,7 @@ private struct SFSymbolPickerViewModifier: ViewModifier {
     @Binding var selection: String?
 
     func body(content: Content) -> some View {
-        #if os(macOS)
+        #if os(macOS) || os(visionOS)
         content.popover(isPresented: $isPresented, arrowEdge: .top) {
             PopoverSFSymbolPicker(selection: $selection)
         }

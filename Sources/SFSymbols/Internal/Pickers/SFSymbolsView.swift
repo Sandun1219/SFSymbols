@@ -112,7 +112,7 @@ private struct CategoryFilterSafeAreaBarViewModifier<BarContent: View>: ViewModi
                     barContent()
                     #if os(iOS)
                         .padding(.horizontal, 28)
-                    #elseif os(macOS)
+                    #elseif os(macOS) || os(visionOS)
                         .padding([.horizontal, .bottom])
                     #endif
                         .transition(.opacity.animation(.linear(duration: 0.15)))
