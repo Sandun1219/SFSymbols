@@ -33,13 +33,14 @@ public struct SFSymbolPicker: View {
                 Group {
                     if let selection {
                         Image(systemName: selection)
+                            .font(.system(size: 18))
                             .foregroundStyle(Color.accentColor)
                     } else {
                         Text("Select...")
                     }
                 }
                 .foregroundStyle(Color.accentColor)
-                .frame(width: 60, height: 30, alignment: .trailing)
+                .frame(width: 30, height: 30)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
