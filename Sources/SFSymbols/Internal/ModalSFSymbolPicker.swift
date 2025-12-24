@@ -41,7 +41,6 @@ public struct ModalSFSymbolPicker: View {
             .navigationTitle("Symbols")
             #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
-            #endif
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     if #available(iOS 26, *) {
@@ -58,6 +57,7 @@ public struct ModalSFSymbolPicker: View {
                     }
                 }
             }
+            #endif
         }
         .task {
             do {
