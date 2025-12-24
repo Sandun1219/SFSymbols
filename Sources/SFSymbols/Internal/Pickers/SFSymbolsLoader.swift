@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct LoadingSymbolPicker: View {
-    @Binding var selection: String?
+struct SFSymbolsLoader<Content: View>: View {
+    @ViewBuilder let content: (SFSymbols) -> Content
 
     @State private var loadError: Error?
     @State private var symbols: SFSymbols?
@@ -9,7 +9,7 @@ struct LoadingSymbolPicker: View {
     var body: some View {
         Group {
             if let symbols {
-                SymbolPicker(selection: $selection, symbols: symbols)
+                content(symbols)
             } else if let loadError {
                 ContentUnavailableView(
                     "Could not load symbols",

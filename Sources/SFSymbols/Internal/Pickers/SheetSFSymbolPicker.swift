@@ -1,15 +1,17 @@
 import SwiftUI
 
-struct SheetSymbolPicker: View {
+struct SheetSFSymbolPicker: View {
     @Binding var selection: String?
 
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         NavigationStack {
-            LoadingSymbolPicker(selection: $selection)
-                .background(BackgroundView())
-                .navigationTitle("Symbols")
+            SFSymbolsLoader { symbols in
+                SFSymbolsView(selection: $selection, symbols: symbols)
+            }
+            .background(BackgroundView())
+            .navigationTitle("Symbols")
             #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -33,7 +35,7 @@ struct SheetSymbolPicker: View {
     }
 }
 
-private extension SheetSymbolPicker {
+private extension SheetSFSymbolPicker {
     struct BackgroundView: View {
         @Environment(\.colorScheme) private var colorScheme
         private var backgroundStyle: some ShapeStyle {
@@ -58,5 +60,5 @@ private extension SheetSymbolPicker {
 #Preview {
     @Previewable @State var selection: String?
 
-    SheetSymbolPicker(selection: $selection)
+    SheetSFSymbolPicker(selection: $selection)
 }

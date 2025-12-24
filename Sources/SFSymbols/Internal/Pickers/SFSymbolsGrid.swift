@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SymbolGrid: View {
+struct SFSymbolsGrid: View {
     let symbols: [SFSymbol]
     @Binding var selection: String?
 
@@ -57,7 +57,7 @@ struct SymbolGrid: View {
     }
 }
 
-private extension SymbolGrid {
+private extension SFSymbolsGrid {
     private func itemWidth(forContainerWidth containerWidth: CGFloat) -> CGFloat {
         guard containerWidth > 0 else {
             return preferredTileSize.width
@@ -70,7 +70,7 @@ private extension SymbolGrid {
     }
 }
 
-private extension SymbolGrid {
+private extension SFSymbolsGrid {
     private struct SymbolTile: View {
         let scale: CGFloat
         let systemName: String

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SymbolPicker: View {
+struct SFSymbolsView: View {
     @Binding var selection: String?
     let symbols: SFSymbols
 
@@ -27,7 +27,7 @@ struct SymbolPicker: View {
                         Color.clear
                             .frame(height: 0)
                             .id("top")
-                        SymbolGrid(symbols: currentSymbols, selection: $selection)
+                        SFSymbolsGrid(symbols: currentSymbols, selection: $selection)
                     }
                     #if os(macOS)
                     .contentMargins(.top, 8, for: .scrollContent)
@@ -68,7 +68,7 @@ struct SymbolPicker: View {
     }
 }
 
-private extension SymbolPicker {
+private extension SFSymbolsView {
     private func updateCurrentResults(oldSearchText: String = "") {
         searchTask?.cancel()
         let oldNormalizedSearchText = oldSearchText.normalizedForSearch

@@ -21,7 +21,7 @@ private struct SFSymbolPickerViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         #if os(macOS)
         content.popover(isPresented: $isPresented, arrowEdge: .top) {
-            PopoverSymbolPicker(selection: $selection)
+            PopoverSFSymbolPicker(selection: $selection)
         }
         #else
         content.sheet(isPresented: $isPresented) {
