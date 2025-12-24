@@ -94,7 +94,7 @@ private extension CategoryFilterPicker {
 }
 
 nonisolated private struct CategoryFilterItemBoundsKey: PreferenceKey {
-    nonisolated(unsafe) static let defaultValue: [CategoryFilter: Anchor<CGRect>] = [:]
+    static let defaultValue: [CategoryFilter: Anchor<CGRect>] = [:]
 
     static func reduce(
         value: inout [CategoryFilter: Anchor<CGRect>],
