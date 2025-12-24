@@ -34,7 +34,7 @@ public struct SFSymbolPicker: View {
                     if let selection {
                         Image(systemName: selection)
                             .font(.system(size: 18))
-                            .foregroundStyle(Color.accentColor)
+                            .foregroundStyle(.tint)
                     } else {
                         Text("Select...")
                     }
