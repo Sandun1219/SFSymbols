@@ -4,6 +4,8 @@
   <h3>SFSymbols provides an SF Symbol picker and a simple API for accessing the SF Symbols catalog.</h3>
   <h4>Use it to let users choose symbols in-app or to build your own symbol browser.</h4>
 
+  [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsimonbs%2FSFSymbols%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/simonbs/SFSymbols)
+  [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsimonbs%2FSFSymbols%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/simonbs/SFSymbols)\
   [![SwiftLint](https://github.com/simonbs/SFSymbols/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/simonbs/SFSymbols/actions/workflows/swiftlint.yml)
   [![Build](https://github.com/simonbs/SFSymbols/actions/workflows/build.yml/badge.svg)](https://github.com/simonbs/SFSymbols/actions/workflows/build.yml)
   [![Build Example Project](https://github.com/simonbs/SFSymbols/actions/workflows/build_example_project.yml/badge.svg)](https://github.com/simonbs/SFSymbols/actions/workflows/build_example_project.yml)
