@@ -22,10 +22,12 @@ private struct SFSymbolPickerViewModifier: ViewModifier {
         #if os(macOS) || os(visionOS)
         content.popover(isPresented: $isPresented, arrowEdge: .top) {
             PopoverSFSymbolPicker(selection: $selection)
+                .tint(nil)
         }
         #else
         content.sheet(isPresented: $isPresented) {
             SheetSFSymbolPicker(selection: $selection)
+                .tint(nil)
         }
         #endif
     }
