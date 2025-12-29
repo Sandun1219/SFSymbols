@@ -35,7 +35,7 @@ struct SFSymbolsGrid: View {
                 Button {
                     selection = symbol.name
                 } label: {
-                    SymbolTile(
+                    SFSymbolTile(
                         scale: symbolTileScale,
                         systemName: symbol.name,
                         isSelected: symbol.name == selection
@@ -67,55 +67,5 @@ private extension SFSymbolsGrid {
         let itemCount = max(1, Int(floor(rawCount)))
         let totalSpacing = CGFloat(itemCount - 1) * spacing
         return floor((availableWidth - totalSpacing) / CGFloat(itemCount))
-    }
-}
-
-private extension SFSymbolsGrid {
-    private struct SymbolTile: View {
-        let scale: CGFloat
-        let systemName: String
-        let isSelected: Bool
-
-        @Environment(\.colorScheme) private var colorScheme
-        @Environment(\.displayScale) private var displayScale
-        private var cornerRadius: CGFloat {
-            round(12 * scale)
-        }
-        private var backgroundStyle: some ShapeStyle {
-            switch colorScheme {
-            case .light:
-                AnyShapeStyle(.background)
-            case .dark:
-                AnyShapeStyle(.background.secondary)
-            @unknown default:
-                AnyShapeStyle(.background.secondary)
-            }
-        }
-        private var strokeStyle: some ShapeStyle {
-            isSelected ? AnyShapeStyle(Color.blue) : AnyShapeStyle(.separator)
-        }
-
-        var body: some View {
-            ZStack {
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .fill(backgroundStyle)
-                    #if os(macOS)
-                    .opacity(0.6)
-                    #endif
-                #if os(macOS)
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .fill(.ultraThinMaterial)
-                #endif
-            }
-            .overlay {
-                Image(systemName: systemName)
-                    .font(.system(size: 18 * scale, weight: .regular))
-                    .modifier(SFSymbolStyleViewModifier())
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .stroke(strokeStyle, lineWidth: isSelected ? 2 : 1 / displayScale)
-            }
-        }
     }
 }

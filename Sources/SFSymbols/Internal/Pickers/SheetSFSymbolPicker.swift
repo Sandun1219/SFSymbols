@@ -5,6 +5,7 @@ struct SheetSFSymbolPicker: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var searchText = ""
+    @State private var symbolBackgroundSetting: SymbolBackgroundSetting = .default
 
     var body: some View {
         NavigationStack {
@@ -14,6 +15,7 @@ struct SheetSFSymbolPicker: View {
                     symbols: symbols,
                     searchText: searchText
                 )
+                .environment(\.symbolBackgroundSetting, symbolBackgroundSetting)
             }
             .background(BackgroundView())
             .navigationTitle("Symbols")
@@ -22,6 +24,9 @@ struct SheetSFSymbolPicker: View {
             #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        SettingsMenu(symbolBackgroundSetting: $symbolBackgroundSetting)
+                    }
                     ToolbarItem(placement: .topBarTrailing) {
                         if #available(iOS 26, *) {
                             Button(role: .close) {

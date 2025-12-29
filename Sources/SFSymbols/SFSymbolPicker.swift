@@ -4,7 +4,7 @@ public struct SFSymbolPicker: View {
     private let titleResource: LocalizedStringResource
     @Binding private var selection: String?
     @State private var isPresented = false
-    @Environment(\.sfSymbolPickerPreviewUsesRenderingMode) private var previewUsesRenderingMode
+    @Environment(\.symbolPickerPreviewUsesRenderingMode) private var previewUsesRenderingMode
 
     public init(
         _ titleResource: LocalizedStringResource,

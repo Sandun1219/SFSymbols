@@ -1,23 +1,23 @@
 import SwiftUI
 
 struct SFSymbolStyleViewModifier: ViewModifier {
-    @Environment(\.sfSymbolPickerRenderingMode) private var renderingMode
-    @Environment(\.sfSymbolPickerColorRenderingMode) private var colorRenderingMode
-    @Environment(\.sfSymbolPickerForegroundStyle) private var foregroundStyle
+    @Environment(\.symbolPickerRenderingMode) private var symbolPickerRenderingMode
+    @Environment(\.symbolColorRenderingModeSetting) private var symbolColorRenderingModeSetting
+    @Environment(\.symbolColorsSetting) private var symbolColorsSetting
 
     func body(content: Content) -> some View {
         content
-            .symbolRenderingMode(renderingMode)
-            .backportedSymbolColorRenderingMode(colorRenderingMode)
-            .foregroundStyle(foregroundStyle)
+            .symbolRenderingMode(symbolPickerRenderingMode)
+            .symbolColorRenderingModeSetting(symbolColorRenderingModeSetting)
+            .symbolColors(symbolColorsSetting)
     }
 }
 
 private extension View {
     @ViewBuilder
-    func backportedSymbolColorRenderingMode(_ mode: BackportedSymbolColorRenderingMode) -> some View {
+    func symbolColorRenderingModeSetting(_ setting: SymbolColorRenderingModeSetting) -> some View {
         if #available(iOS 26, *) {
-            switch mode {
+            switch setting {
             case .flat:
                 symbolColorRenderingMode(.flat)
             case .gradient:
