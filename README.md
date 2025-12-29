@@ -17,6 +17,7 @@
   - [Add the SFSymbols Swift Package](#add-the-sfsymbols-swift-package)
   - [Use SFSymbolPicker](#use-sfsymbolpicker)
   - [Present the Picker With .sfSymbolPicker(...)](#present-the-picker-with-sfsymbolpicker)
+  - [Configure Picker Settings](#configure-picker-settings)
   - [Load and Browse Symbols With SFSymbols](#load-and-browse-symbols-with-sfsymbols)
 - [📱 Example Project](#-example-project)
 
@@ -83,6 +84,29 @@ struct ContentView: View {
 ```
 
 `.sfSymbolPicker` can be attached to any view, including images, list rows, or custom buttons.
+
+### Configure Picker Settings
+
+The picker reads its configuration from SwiftUI environment values. These settings control the
+appearance of the symbols shown in the picker, and you can set them anywhere in the view tree
+with the provided view modifiers.
+
+```swift
+SFSymbolPicker("Symbol", selection: $selectedSymbol)
+    .sfSymbolPickerRenderingMode(.hierarchical)
+    .sfSymbolPickerForegroundStyle(.primary, .blue, .secondary)
+    .sfSymbolPickerPreviewUsesRenderingMode(true)
+```
+
+Available settings:
+
+- `.sfSymbolPickerRenderingMode(_:)` sets the rendering mode for the symbols. Default is `.monochrome`.
+  Supported values: `.monochrome`, `.hierarchical`, `.palette`, and `.multicolor`.
+- `.sfSymbolPickerColorRenderingMode(_:)` specifies whether the symbols are rendered with gradient colors.
+  Available on iOS 26 and macOS 26. Supported values: `.flat` and `.gradient`.
+- `.sfSymbolPickerForegroundStyle(...)` sets primary, secondary, and tertiary color applied to symbols.
+- `.sfSymbolPickerPreviewUsesRenderingMode(_:)` defines whether the same appearance
+  settings are applied to the preview inside `SFSymbolPicker`. Default is `false`.
 
 ### Load and Browse Symbols With SFSymbols
 

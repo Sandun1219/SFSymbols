@@ -20,7 +20,7 @@ struct ContentView: View {
                         #endif
                         .sfSymbolPickerRenderingMode(SymbolRenderingMode(renderingMode))
                         .backportedSFSymbolPickerColorRenderingMode(isGradientEnabled ? .gradient : .flat)
-                        .sfSymbolPickerForegroundStyle(primaryColor, secondary: secondaryColor, tertiary: tertiaryColor)
+                        .sfSymbolPickerForegroundStyle(primaryColor, secondaryColor, tertiaryColor)
                         .sfSymbolPickerPreviewUsesRenderingMode(stylePreview)
                 }
                 #if os(macOS)
