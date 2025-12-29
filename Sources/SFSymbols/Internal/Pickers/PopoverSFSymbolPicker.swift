@@ -5,6 +5,7 @@ struct PopoverSFSymbolPicker: View {
 
     @State private var searchText = ""
     @FocusState private var isSearchedFocused: Bool
+    @State private var symbolBackgroundSetting: SymbolBackgroundSetting = .default
 
     var body: some View {
         SFSymbolsLoader { symbols in
@@ -13,18 +14,22 @@ struct PopoverSFSymbolPicker: View {
                 symbols: symbols,
                 searchText: searchText
             )
+            .environment(\.symbolBackgroundSetting, symbolBackgroundSetting)
             .modifier(SearchSafeAreaBarViewModifier {
-                HStack(spacing: 4) {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundStyle(.placeholder)
-                    TextField("Search", text: $searchText, prompt: Text("Search"))
-                        .textFieldStyle(.plain)
-                        .focused($isSearchedFocused)
+                HStack {
+                    HStack(spacing: 4) {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(.placeholder)
+                        TextField("Search", text: $searchText, prompt: Text("Search"))
+                            .textFieldStyle(.plain)
+                            .focused($isSearchedFocused)
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 6)
+                    .background(Capsule().fill(.ultraThinMaterial.opacity(0.85)))
+                    .overlay(Capsule().stroke(.separator, lineWidth: 1))
+                    SettingsMenu(symbolBackgroundSetting: $symbolBackgroundSetting)
                 }
-                .padding(.horizontal, 8)
-                .padding(.vertical, 6)
-                .background(Capsule().fill(.ultraThinMaterial.opacity(0.85)))
-                .overlay(Capsule().stroke(.separator, lineWidth: 1))
             })
         }
         .frame(width: 360, height: 500)

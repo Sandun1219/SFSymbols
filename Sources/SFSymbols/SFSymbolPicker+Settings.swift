@@ -6,7 +6,7 @@ public extension View {
         environment(\.symbolPickerRenderingMode, renderingMode)
     }
 
-    @available(iOS 26, *)
+    @available(iOS 26, macOS 26, *)
     @ViewBuilder
     func sfSymbolPickerColorRenderingMode(_ colorMode: SymbolColorRenderingMode) -> some View {
         if colorMode == .flat {

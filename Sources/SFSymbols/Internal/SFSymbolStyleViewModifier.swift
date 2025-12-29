@@ -16,7 +16,7 @@ struct SFSymbolStyleViewModifier: ViewModifier {
 private extension View {
     @ViewBuilder
     func symbolColorRenderingModeSetting(_ setting: SymbolColorRenderingModeSetting) -> some View {
-        if #available(iOS 26, *) {
+        if #available(iOS 26, macOS 26, *) {
             switch setting {
             case .flat:
                 symbolColorRenderingMode(.flat)

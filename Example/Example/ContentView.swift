@@ -23,6 +23,11 @@ struct ContentView: View {
                         .sfSymbolPickerForegroundStyle(primaryColor, secondary: secondaryColor, tertiary: tertiaryColor)
                         .sfSymbolPickerPreviewUsesRenderingMode(stylePreview)
                 }
+                #if os(macOS)
+                Divider()
+                    .frame(maxWidth: 200)
+                    .padding(.vertical)
+                #endif
                 Section {
                     Picker(selection: $renderingMode) {
                         ForEach(SymbolRenderingModeSetting.allCases) { kind in
@@ -52,12 +57,17 @@ struct ContentView: View {
                             Text("Color")
                         }
                     }
-                    if #available(iOS 26, *) {
+                    if #available(iOS 26, macOS 26, *) {
                         Toggle(isOn: $isGradientEnabled) {
                             Text("Gradient")
                         }
                     }
                 }
+                #if os(macOS)
+                Divider()
+                    .frame(maxWidth: 200)
+                    .padding(.vertical)
+                #endif
                 Section {
                     Toggle("Style Preview", isOn: $stylePreview)
                 }
