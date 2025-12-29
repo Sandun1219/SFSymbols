@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="recording.gif" />
   <h1>SFSymbols</h1>
   <h3>SFSymbols provides an SF Symbol picker and a simple API for accessing the SF Symbols catalog.</h3>
   <h4>Use it to let users choose symbols in-app or to build your own symbol browser.</h4>
