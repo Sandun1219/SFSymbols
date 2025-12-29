@@ -28,6 +28,7 @@ struct PopoverSFSymbolPicker: View {
             })
         }
         .frame(width: 360, height: 500)
+        .foregroundStyle(Color.primary)
         #if os(macOS)
         .onAppear {
             isSearchedFocused = true

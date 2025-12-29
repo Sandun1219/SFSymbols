@@ -4,6 +4,7 @@ public struct SFSymbolPicker: View {
     private let titleResource: LocalizedStringResource
     @Binding private var selection: String?
     @State private var isPresented = false
+    @Environment(\.sfSymbolPickerPreviewUsesRenderingMode) private var previewUsesRenderingMode
 
     public init(
         _ titleResource: LocalizedStringResource,
@@ -32,9 +33,16 @@ public struct SFSymbolPicker: View {
             } label: {
                 Group {
                     if let selection {
-                        Image(systemName: selection)
-                            .font(.system(size: 18))
-                            .foregroundStyle(.tint)
+                        Group {
+                            if previewUsesRenderingMode {
+                                Image(systemName: selection)
+                                    .modifier(SFSymbolStyleViewModifier())
+                            } else{
+                                Image(systemName: selection)
+                                    .foregroundStyle(.tint)
+                            }
+                        }
+                        .font(.system(size: 18))
                     } else {
                         Text("Select...")
                     }

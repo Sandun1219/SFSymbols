@@ -18,6 +18,7 @@ struct SheetSFSymbolPicker: View {
             .background(BackgroundView())
             .navigationTitle("Symbols")
             .searchable(text: $searchText)
+            .foregroundStyle(Color.primary)
             #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

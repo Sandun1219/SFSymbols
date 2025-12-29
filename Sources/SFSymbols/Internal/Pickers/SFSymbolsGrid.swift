@@ -110,8 +110,7 @@ private extension SFSymbolsGrid {
             .overlay {
                 Image(systemName: systemName)
                     .font(.system(size: 18 * scale, weight: .regular))
-                    .symbolRenderingMode(.monochrome)
-                    .foregroundStyle(.primary)
+                    .modifier(SFSymbolStyleViewModifier())
             }
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
