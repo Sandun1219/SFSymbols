@@ -11,9 +11,6 @@ struct SFSymbolTile: View {
     private var cornerRadius: CGFloat {
         round(12 * scale)
     }
-    private var strokeStyle: some ShapeStyle {
-        isSelected ? AnyShapeStyle(Color.blue) : AnyShapeStyle(.separator)
-    }
     private var preferredColorScheme: ColorScheme {
         switch symbolBackgroundSetting {
         case .default:
@@ -34,7 +31,10 @@ struct SFSymbolTile: View {
             }
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                    .stroke(strokeStyle, lineWidth: isSelected ? 2 : 1 / displayScale)
+                    .stroke(
+                        isSelected ? AnyShapeStyle(Color.blue) : AnyShapeStyle(.separator),
+                        lineWidth: isSelected ? 2 : 1 / displayScale
+                    )
             }
             .colorScheme(preferredColorScheme)
     }
