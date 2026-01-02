@@ -51,7 +51,7 @@ struct CategoryFilterPicker: View {
             }
         }
         .clipShape(.capsule)
-        .scrollIndicators(.hidden)
+        .scrollIndicators(.never)
         .frame(height: 44)
         .coordinateSpace(name: "CategoryFilterPicker")
         .background {
