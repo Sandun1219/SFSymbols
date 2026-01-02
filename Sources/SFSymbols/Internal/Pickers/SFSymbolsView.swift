@@ -49,7 +49,7 @@ struct SFSymbolsView: View {
             }
         }
         .modifier(CategoryFilterSafeAreaBarViewModifier(isEnabled: !showSearchResults) {
-            CategoryFilterPicker(categories: symbols.displayableCategories, selection: $categoryFilter)
+            CategoryFilterPicker(categories: symbols.categories.displayable, selection: $categoryFilter)
                 .transition(.opacity.animation(.linear(duration: 0.1)))
         })
         .onAppear {
@@ -131,16 +131,6 @@ private struct CategoryFilterSafeAreaBarViewModifier<BarContent: View>: ViewModi
                     .transition(.opacity.animation(.linear(duration: 0.15)))
                 }
             }
-        }
-    }
-}
-
-private extension SFSymbols {
-    var displayableCategories: [SFSymbolCategory] {
-        categories.filter { category in
-            category.key != "whatsnew"
-            && category.key != "variable"
-            && category.key != "multicolor"
         }
     }
 }
